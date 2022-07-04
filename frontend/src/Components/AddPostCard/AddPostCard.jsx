@@ -12,6 +12,7 @@ export class AddPostCard extends React.Component {
     this.state = {
       title: "",
       description: "",
+      color: "Blue",
     };
   }
 
@@ -20,18 +21,22 @@ export class AddPostCard extends React.Component {
     this.setState({ [name]: value });
   };
 
+  assignColor = (color) => {
+    this.setState({ color: color });
+  };
+
   handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(this.state.title, this.state.description);
     const data = {
       title: this.state.title,
       description: this.state.description,
+      color: this.state.color,
     };
     await axios.post("http://localhost:5000/post", data).then((res) => {
       this.props.addItem(data);
-      this.props.onHide()
+      this.props.onHide();
     });
-
   };
 
   render() {
@@ -69,7 +74,21 @@ export class AddPostCard extends React.Component {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Title Color</Form.Label>
+              <Form.Label>Title Color: {this.state.color}</Form.Label>
+              <div class="d-flex flex-row" style={{ justifyContent: "end" }}>
+                <div
+                  onClick={this.assignColor.bind(this, "Blue")}
+                  class="p-2 h-45 w-25 bg-primary"
+                />
+                <div
+                  onClick={this.assignColor.bind(this, "Red")}
+                  class="p-2 h-45 w-25 bg-danger"
+                />
+                <div
+                  onClick={this.assignColor.bind(this, "Green")}
+                  class="p-2 h-45 w-25 bg-success"
+                />
+              </div>
             </Form.Group>
 
             <Button

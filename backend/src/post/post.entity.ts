@@ -13,6 +13,9 @@ export class Posts {
   @Prop()
   description: string;
 
+  @Prop()
+  color: string;
+
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comments' }] })
   comments: Comment[];
 }

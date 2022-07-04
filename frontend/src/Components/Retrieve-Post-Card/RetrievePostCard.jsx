@@ -32,7 +32,7 @@ export class RetrievePostCard extends React.Component {
         <Card border="dark" className="post-card">
           <Card.Body>
             <Card.Title
-            style={{ color: this.state.hover ? 'red' : 'blue'}}
+            style={{ color: this.props.item.color}}
               onMouseOut={this.changeColor.bind(this, false)}
               onMouseOver={this.changeColor.bind(this, true)}
               onClick={this.openViewPostModal}
