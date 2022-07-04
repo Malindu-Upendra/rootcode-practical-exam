@@ -1,0 +1,16 @@
+.add-post-button{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.header-title{
+    float:none;
+}
+
+.header{
+    text-align: center;
+}
+
+.home-body{
+    width: 30%;
+}
